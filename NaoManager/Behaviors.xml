@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NaoBehaviors>
+  <CrgBehaviors>
+    <CrgBehavior>Wink</CrgBehavior>
+    <CrgBehavior>Blink</CrgBehavior>
+    <CrgBehavior>Kick</CrgBehavior>
+    <CrgBehavior>Akimbo</CrgBehavior>
+    <CrgBehavior>tacint_nosay</CrgBehavior>
+    <CrgBehavior>Twinkle</CrgBehavior>
+    <CrgBehavior>kjnklj</CrgBehavior>
+  </CrgBehaviors>
+  <ParameterizedBehaviors>
+  </ParameterizedBehaviors>
+</NaoBehaviors>
