@@ -97,11 +97,11 @@ namespace NaoManager
                     // Change robot mood
                     if (this.NaoAffect.SentiAffect.SentiTextEnabled)
                     {
+                        /* TODO: TextSentiment is not available in this version.
                     	//SendMessage("TextSentiment", new MessageEventArgs("TextSenti", new string [] {texttosay}));
-
                         MessageEventArgs backdata = this.NaoAffect.SentiAffect.MessageHandler(this.ID, new MessageEventArgs("TextSenti", new string[] { texttosay }));
                         double valence = (double)backdata.DataReturn;
-                        
+                        */
                     }
 
                     NaoClient.Say(texttosay);
@@ -117,7 +117,9 @@ namespace NaoManager
                     string valence = vad[0];
                     //string arousal = vad[1];
                     //string dominance = vad[2]; 
-                    this.NaoAffect.Valence = double.Parse(valence);
+                    Invoke((MethodInvoker)delegate() { 
+                        this.NaoAffect.Valence = double.Parse(valence); 
+                    });
                 }
                 else if (message.Cmd == "ExecuteBehavior")
                 {
@@ -891,6 +893,9 @@ namespace NaoManager
             }
             else // Parameterized behavior
             {
+                return true;
+
+                /* TODO: the current is too slow
                 if (BehaviorGenerator.ContainsKey(behaviorname))
                 {
                     MotionTimeline mtl = BehaviorGenerator[behaviorname].LoadBehavior(0);
@@ -910,6 +915,7 @@ namespace NaoManager
                 }
                 else
                     return false;
+                */
             }
         }
 

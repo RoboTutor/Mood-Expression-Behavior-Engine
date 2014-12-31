@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScriptEditor));
             this.nudJumpNum = new System.Windows.Forms.NumericUpDown();
             this.btnExecute = new System.Windows.Forms.Button();
@@ -66,7 +67,7 @@
             this.nudJumpNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.nudJumpNum.Location = new System.Drawing.Point(3, 3);
             this.nudJumpNum.Name = "nudJumpNum";
-            this.nudJumpNum.Size = new System.Drawing.Size(75, 38);
+            this.nudJumpNum.Size = new System.Drawing.Size(90, 45);
             this.nudJumpNum.TabIndex = 6;
             // 
             // btnExecute
@@ -95,10 +96,10 @@
             // 
             // fctbScriptEditor
             // 
-            this.fctbScriptEditor.AutoScrollMinSize = new System.Drawing.Size(0, 14);
+            this.fctbScriptEditor.AutoScrollMinSize = new System.Drawing.Size(0, 18);
             this.fctbScriptEditor.BackBrush = null;
-            this.fctbScriptEditor.CharHeight = 14;
-            this.fctbScriptEditor.CharWidth = 8;
+            this.fctbScriptEditor.CharHeight = 18;
+            this.fctbScriptEditor.CharWidth = 10;
             this.fctbScriptEditor.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fctbScriptEditor.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fctbScriptEditor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,7 +108,7 @@
             this.fctbScriptEditor.Name = "fctbScriptEditor";
             this.fctbScriptEditor.Paddings = new System.Windows.Forms.Padding(0);
             this.fctbScriptEditor.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.fctbScriptEditor.Size = new System.Drawing.Size(574, 355);
+            this.fctbScriptEditor.Size = new System.Drawing.Size(600, 500);
             this.fctbScriptEditor.TabIndex = 1;
             this.fctbScriptEditor.WordWrap = true;
             this.fctbScriptEditor.Zoom = 100;
@@ -115,14 +116,15 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.btnLoad);
             this.flowLayoutPanel1.Controls.Add(this.btnExecute);
             this.flowLayoutPanel1.Controls.Add(this.btnPause);
             this.flowLayoutPanel1.Controls.Add(this.btnStop);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 422);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 567);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(574, 84);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(600, 81);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // btnPause
@@ -153,21 +155,20 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.fctbScriptEditor, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(580, 507);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 651);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // flowLayoutPanel2
@@ -195,9 +196,9 @@
             this.tsbtnInsertBehavior,
             this.tsbtnRemoveBehavior,
             this.tsbtnInsertQuiz});
-            this.tsUpper.Location = new System.Drawing.Point(81, 0);
+            this.tsUpper.Location = new System.Drawing.Point(96, 0);
             this.tsUpper.Name = "tsUpper";
-            this.tsUpper.Size = new System.Drawing.Size(345, 47);
+            this.tsUpper.Size = new System.Drawing.Size(345, 51);
             this.tsUpper.TabIndex = 7;
             this.tsUpper.Text = "toolStripUpper";
             // 
@@ -216,7 +217,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 51);
             // 
             // tsbtnSave
             // 
@@ -228,21 +229,21 @@
             this.tsbtnSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnSave.Image")));
             this.tsbtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnSave.Name = "tsbtnSave";
-            this.tsbtnSave.Size = new System.Drawing.Size(56, 44);
+            this.tsbtnSave.Size = new System.Drawing.Size(56, 48);
             this.tsbtnSave.Text = "Save";
             this.tsbtnSave.ButtonClick += new System.EventHandler(this.tsbtnSave_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.tsbtnSave_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.saveAsToolStripMenuItem.Text = "SaveAs...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
@@ -261,7 +262,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 51);
             // 
             // tsbtnSymbol
             // 
@@ -274,21 +275,21 @@
             this.tsbtnSymbol.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnSymbol.Image")));
             this.tsbtnSymbol.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnSymbol.Name = "tsbtnSymbol";
-            this.tsbtnSymbol.Size = new System.Drawing.Size(53, 44);
+            this.tsbtnSymbol.Size = new System.Drawing.Size(53, 48);
             this.tsbtnSymbol.Text = "Symbol";
             this.tsbtnSymbol.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // insertBehaviorToolStripMenuItem
             // 
             this.insertBehaviorToolStripMenuItem.Name = "insertBehaviorToolStripMenuItem";
-            this.insertBehaviorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.insertBehaviorToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.insertBehaviorToolStripMenuItem.Text = "Insert behavior";
             this.insertBehaviorToolStripMenuItem.Click += new System.EventHandler(this.insertBehavior_Click);
             // 
             // insertQuizToolStripMenuItem
             // 
             this.insertQuizToolStripMenuItem.Name = "insertQuizToolStripMenuItem";
-            this.insertQuizToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.insertQuizToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
             this.insertQuizToolStripMenuItem.Text = "Insert quiz";
             this.insertQuizToolStripMenuItem.Click += new System.EventHandler(this.insertQuiz_Click);
             // 
@@ -298,7 +299,7 @@
             this.tsbtnInsertBehavior.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsertBehavior.Image")));
             this.tsbtnInsertBehavior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsertBehavior.Name = "tsbtnInsertBehavior";
-            this.tsbtnInsertBehavior.Size = new System.Drawing.Size(44, 44);
+            this.tsbtnInsertBehavior.Size = new System.Drawing.Size(44, 48);
             this.tsbtnInsertBehavior.Text = "InsertBehavior";
             this.tsbtnInsertBehavior.Click += new System.EventHandler(this.insertBehavior_Click);
             // 
@@ -308,7 +309,7 @@
             this.tsbtnRemoveBehavior.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnRemoveBehavior.Image")));
             this.tsbtnRemoveBehavior.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnRemoveBehavior.Name = "tsbtnRemoveBehavior";
-            this.tsbtnRemoveBehavior.Size = new System.Drawing.Size(44, 44);
+            this.tsbtnRemoveBehavior.Size = new System.Drawing.Size(44, 48);
             this.tsbtnRemoveBehavior.Text = "BehaviorRemove";
             this.tsbtnRemoveBehavior.Click += new System.EventHandler(this.tsbtnRemoveBehavior_Click);
             // 
@@ -318,28 +319,30 @@
             this.tsbtnInsertQuiz.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnInsertQuiz.Image")));
             this.tsbtnInsertQuiz.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnInsertQuiz.Name = "tsbtnInsertQuiz";
-            this.tsbtnInsertQuiz.Size = new System.Drawing.Size(44, 44);
+            this.tsbtnInsertQuiz.Size = new System.Drawing.Size(44, 48);
             this.tsbtnInsertQuiz.Text = "InsertQuiz";
             this.tsbtnInsertQuiz.Click += new System.EventHandler(this.insertQuiz_Click);
             // 
             // ScriptEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "ScriptEditor";
-            this.Size = new System.Drawing.Size(583, 510);
+            this.Size = new System.Drawing.Size(606, 651);
             ((System.ComponentModel.ISupportInitialize)(this.nudJumpNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fctbScriptEditor)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.tsUpper.ResumeLayout(false);
             this.tsUpper.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

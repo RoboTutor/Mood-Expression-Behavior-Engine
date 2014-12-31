@@ -36,9 +36,8 @@ namespace DashBoard
     {
         // Dockees
         NaoRobotManager NaoRobotMgr;
-        ScriptEditor ScriptManager;
+        ScriptInterpreter ScriptManager;
         SlidesController PPTSlidesController;
-        ExternalScriptEngine ExtScriptManager;
         // Docker
         Dictionary<string, IMessenger> Dockees;
 
@@ -50,15 +49,13 @@ namespace DashBoard
             InitializeComponent();
 
             NaoRobotMgr = new NaoRobotManager();
-            ScriptManager = new ScriptEditor();
+            ScriptManager = new ScriptInterpreter();
             PPTSlidesController = new SlidesController();
-            ExtScriptManager = new ExternalScriptEngine();
 
             Dockees = new Dictionary<string, IMessenger>();
             Docking(NaoRobotMgr);
             Docking(ScriptManager);
             Docking(PPTSlidesController);
-            Docking(ExtScriptManager);
 
             EventMap();
 
@@ -66,9 +63,8 @@ namespace DashBoard
             this.rdbtnPositiveMoodCondition.Checked = true;
             // Tabs
             this.tbpRobotMgr.Controls.Add(NaoRobotMgr);
-            this.tbpScriptEngine.Controls.Add(ScriptManager);
+            this.tbpScriptEngine.Controls.Add(ScriptManager.UI);
             this.tbpPPT.Controls.Add(PPTSlidesController);
-            this.tbpExtSE.Controls.Add(ExtScriptManager);
         }
 
         /// <summary>
@@ -131,12 +127,14 @@ namespace DashBoard
         #region Main Tab
         private void rdbtnPositiveMoodCondition_CheckedChanged(object sender, EventArgs e)
         {
-            ///SetValence(10.0);
+            double mood = 10.0;
+            SendMessage("NaoManager", new MessageEventArgs("ChangeRobotMood", new string[] { mood.ToString() }));
         }
 
         private void rdbtnNegativeMoodCondition_CheckedChanged(object sender, EventArgs e)
         {
-            ///SetValence(-10.0);
+            double mood = -10.0;
+            SendMessage("NaoManager", new MessageEventArgs("ChangeRobotMood", new string[] { mood.ToString() }));
         }
 
         private void btnSecondPart_Click(object sender, EventArgs e)

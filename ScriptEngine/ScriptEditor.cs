@@ -13,196 +13,77 @@
  */
 
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
-using Messenger;
-using System.Text;
-using System.Collections.Generic;
 
 namespace ScriptEngine
 {
     /// <summary>
     /// The authoring tool for creating scripts
     /// </summary>
-    public partial class ScriptEditor : UserControl, IMessenger
+    public partial class ScriptEditor : UserControl
     {
-        ScriptParser Parser;
+        ScriptInterpreter Parser = null;
 
-        public ScriptEditor()
+        public ScriptEditor(ScriptInterpreter parser = null)
         {
             InitializeComponent();
 
-            Parser = new ScriptParser();
-
-            EventMap();
+            this.Parser = parser;
         }
 
-        private void EventMap()
+        /// <summary>
+        /// Obsolete. Used for automatic text sentiment analysis.
+        /// </summary>
+        //bool TextSentiEnabled = false;
+
+        /// <summary>
+        /// Change the UI states.
+        /// </summary>
+        /// <param name="state">the state of the editor</param>
+        internal void EnableUI(ScriptEditorState state)
         {
-            Parser.evExecuteBehavior += delegate(string behaviorname)
+            Invoke((MethodInvoker)delegate()
             {
-                SendMessage("NaoManager", new MessageEventArgs("ExecuteBehavior", new string[] { behaviorname }));
-            };
-
-            Parser.evExecuteSpeech += delegate(string texttosay)
-            {
-                SendMessage("NaoManager", new MessageEventArgs("Say", new string[] { texttosay }));
-            };
-
-            Parser.evCameraPhoto += delegate()
-            {
-                MessageEventArgs backmsg = SendMessage("NaoManager", new MessageEventArgs("CapturePhoto", null));
-                string imgfile = backmsg.TextMsg;
-                SendMessage("PPTController", new MessageEventArgs("ShowPhoto", new string[] { imgfile }));
-            };
-
-            Parser.evSlideControl += delegate(string cmd)
-            {
-                SendMessage("PPTController", new MessageEventArgs(cmd, null));
-            };
-
-            Parser.evFetchQuizAnswers += delegate(out bool disagree, out int useranswer, out int useranswer2)
-            {
-                MessageEventArgs backmsg = SendMessage("PPTController", new MessageEventArgs("FetchQuizAnswers", null));
-                if (backmsg.MsgType == MessageEventArgs.MessageType.DATA)
+                if (state == ScriptEditorState.PLAYING)
                 {
-	                string[] data = backmsg.DataReturn as string[];
-	                disagree = bool.Parse(data[0]);
-	                useranswer = int.Parse(data[1]);
-	                useranswer2 = int.Parse(data[2]);
+                    this.fctbScriptEditor.ReadOnly = true;
+                    this.btnExecute.Enabled = false;
+                    this.btnLoad.Enabled = false;
+                    this.btnPause.Enabled = true;
+                    this.btnStop.Enabled = true;
                 }
-                else
+                else if (state == ScriptEditorState.PAUSE)
                 {
-                    disagree = false;
-                    useranswer = -1;
-                    useranswer2 = -1;
+                    this.btnExecute.Enabled = true;
+                    this.btnPause.Enabled = false;
                 }
-            };
-
-            Parser.evChangeMood += delegate(string mood)
-            {
-                SendMessage("NaoManager", new MessageEventArgs("ChangeRobotMood", new string[] { mood }));
-            };
-
-            Parser.evChangeConfig += delegate(string config)
-            {
-                SendMessage("NaoManager", new MessageEventArgs("Config", new string[] { config }));
-            };
-
-            Parser.evScriptExeFinished += delegate()
-            {
-                SendMessage("NaoManager", new MessageEventArgs("ScriptEnded"));
-
-                IsParserOnTheWay = false;
-
-                Invoke((MethodInvoker)delegate()
+                else if (state == ScriptEditorState.READY_TO_PLAY) // "Stop"
                 {
-                    fctbScriptEditor.SelectionColor = Color.Blue;
-                    EnableUI("ReadyToPlay");
-                });
-            };
-
-            Parser.evLatestScriptUnit += delegate(string behaviorname)
-            {
-                SendMessage("NaoManager", new MessageEventArgs("CheckIdleMoveConflicts", new string[] { behaviorname }));
-            };
-
-            Parser.evShowCurrentLine += delegate(int linenum)
-            {
-                Invoke((MethodInvoker)delegate()
-                {
-                    fctbScriptEditor.Navigate(linenum);
-                    fctbScriptEditor.Selection = new Range(this.fctbScriptEditor, 0, linenum, 0, linenum+1);
-                    fctbScriptEditor.SelectionColor = Color.OrangeRed;
-                    //fctbScriptEditor.CurrentLineColor = Color.GreenYellow;
-                });
-            };
-        }
-
-        public string ID
-        {
-            get { return "ScriptEngine"; }
-        }
-
-        public event ehSendMessage evSendMessage;
-        public MessageEventArgs SendMessage(string sendto, MessageEventArgs msg)
-        {
-            if (evSendMessage != null)
-            {
-                return evSendMessage(sendto, this.ID, msg);
-            }
-            else
-                return null;
-        }
-
-        public MessageEventArgs MessageHandler(string sendfrom, MessageEventArgs message)
-        {
-            if (message.MsgType == MessageEventArgs.MessageType.COMMAND)
-            {
-                if (message.Cmd == "NaoSpeechFinished")
-                {
-	                int len = int.Parse(message.CmdArgs[0]);
-	                //Debug.WriteLine("{0}: NAO speech finished - {1}", this.ID, len );
-
-                    Parser.SpeechDone();
+                    this.fctbScriptEditor.ReadOnly = false;
+                    this.fctbScriptEditor.SelectionColor = Color.Blue;
+                    this.btnExecute.Enabled = true;
+                    this.btnLoad.Enabled = true;
+                    this.btnPause.Enabled = false;
+                    this.btnStop.Enabled = false;
                 }
-                else if (message.Cmd == "TTSNotConnected")
-                {
-                    Console.WriteLine("{0}: Speech is not said: {1}", this.ID, "TTSNotConnected!");
-                    Parser.SpeechDone();
-                }
-                else if (message.Cmd == "NaoBehaviorFinished")
-                {
-                    string behaviorname = message.CmdArgs[0];
-                    Debug.WriteLine("{0}: NAO behavior finished - {1}", this.ID, behaviorname);
-
-                    Parser.BehaviorDone();
-                }
-                else if (message.Cmd == "NaoBehaviorNotExecuted")
-                {
-                    string behaviorname = message.CmdArgs[0];
-                    Debug.WriteLine("{0}: NAO behavior NOT executed! - {1}", this.ID, behaviorname);
-                    Parser.BehaviorDone();
-                }
-            }
-            
-            return null;
-        }
-
-        private void EnableUI(string state)
-        {
-            if (state == "Play")
-            {
-                this.fctbScriptEditor.ReadOnly = true;
-	            this.btnExecute.Enabled = false;
-	            this.btnLoad.Enabled = false;
-                this.btnPause.Enabled = true;
-                this.btnStop.Enabled = true;
-            } 
-            else if (state == "Pause")
-            {
-                this.btnExecute.Enabled = true;
-                this.btnPause.Enabled = false;
-            }
-            else if (state == "ReadyToPlay") // "Stop"
-            {
-                this.fctbScriptEditor.ReadOnly = false;
-                this.btnExecute.Enabled = true;
-                this.btnLoad.Enabled = true;
-                this.btnPause.Enabled = false;
-                this.btnStop.Enabled = false;
-            }
+            });
         }
 
         bool IsParserOnTheWay = false;
         private void btnExecute_Click(object sender, EventArgs e)
         {
-            EnableUI("Play");
+            string[] script = this.fctbScriptEditor.Lines.ToArray();
+            string res = Parser.CheckBehaviors(script);
+            if (res != "OK") return;
+
+            EnableUI(ScriptEditorState.PLAYING);
 
             if (IsParserOnTheWay)
             {
@@ -210,27 +91,30 @@ namespace ScriptEngine
             } 
             else // start new execution
             {
-                // Initialize cooperative component
-                // Maybe put as a {script command}
-                SendMessage("NaoManager", new MessageEventArgs("InitSentiText", new string[] {}));
-
 	            IsParserOnTheWay = true;
-	            string[] script = this.fctbScriptEditor.Lines.ToArray();
 	            Parser.ExecuteScript(script);
+
+                string curtime = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt");
+                string logfile = Directory.GetCurrentDirectory() + "\\..\\..\\log\\StorytellingLog.txt";
+                StreamWriter logger = new StreamWriter(logfile, true);
+                string strstart = "----- " + curtime + "\tStory Started! -----";
+                logger.WriteLine(strstart);
+                logger.Close();
             }
         }
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-            EnableUI("Pause");
+            EnableUI(ScriptEditorState.PAUSE);
             Parser.PauseScript();
-            SendMessage("NaoManager", new MessageEventArgs("ScriptPaused"));
+            
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
             Parser.StopScript();
-            // evScriptExeFinished will 
+            // Parser will emit evScriptExeFinished at the end of the parsing loop.
+            // The following will happen
             //  1. send message to NaoManager
             //  2. EnableUI();
         }
@@ -246,7 +130,7 @@ namespace ScriptEngine
                 CurrentFile = ofd.FileName;
                 this.fctbScriptEditor.Text = File.ReadAllText(CurrentFile);
 
-                EnableUI("ReadyToPlay");
+                EnableUI(ScriptEditorState.READY_TO_PLAY);
             }
         }
 
@@ -264,6 +148,7 @@ namespace ScriptEngine
         TextStyle BlueStyle = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
         TextStyle GrayStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
         TextStyle MagentaStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
+        TextStyle PurpleStyle = new TextStyle(Brushes.Purple, null, FontStyle.Regular);
         TextStyle GreenStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
         TextStyle BrownStyle = new TextStyle(Brushes.Brown, null, FontStyle.Italic);
         TextStyle MaroonStyle = new TextStyle(Brushes.Maroon, null, FontStyle.Regular);
@@ -283,9 +168,12 @@ namespace ScriptEngine
             //comment highlighting; only at the beginning of a line!
             e.ChangedRange.SetStyle(GreenStyle, @"^#.*$", RegexOptions.Multiline);
 
+            // TODO: keywords list into XML files
             //keyword highlighting
             // Command
-            e.ChangedRange.SetStyle(BlueStyle, @"\b(behavior|slide|quiz|camera)\b");
+            e.ChangedRange.SetStyle(BlueStyle, @"\b(behavior|slide|quiz|camera|pause)\b");
+            e.ChangedRange.SetStyle(PurpleStyle, @"\b(mood|text_senti_enabled|constant_head|forwardlooking_head|freelooking_head)\b");
+
             // NAO TTS
             e.ChangedRange.SetStyle(MagentaStyle, @"\b(pau|rst|rspd|vct)\b");
             // NAO Motion
@@ -354,8 +242,6 @@ namespace ScriptEngine
             removebehaviorform.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             removebehaviorform.AutoSize = true;
 
-            // does not work
-            //quizform.Parent = sender as Control;
             removebehaviorform.StartPosition = FormStartPosition.CenterParent;
             DialogResult dr = removebehaviorform.ShowDialog();
 
@@ -421,8 +307,37 @@ namespace ScriptEngine
 
         private void tsbtnCheck_Click(object sender, EventArgs e)
         {
+            string[] script = this.fctbScriptEditor.Lines.ToArray();
 
+            string result = Parser.CheckBehaviors(script);
+
+            if (result == "OK") MessageBox.Show("All behaviors exist!", "Check Behaviors");
+            else MessageBox.Show(result, "Check Behaviors");
         }
 
+        internal void ScriptExecuted()
+        {
+            IsParserOnTheWay = false;
+
+            EnableUI(ScriptEditorState.READY_TO_PLAY);
+        }
+
+        internal void ShowCurrentLine(int linenum)
+        {
+            Invoke((MethodInvoker)delegate()
+            {
+                fctbScriptEditor.Navigate(linenum);
+                fctbScriptEditor.Selection = new Range(this.fctbScriptEditor, 0, linenum, 0, linenum + 1);
+                fctbScriptEditor.SelectionColor = Color.OrangeRed;
+                //fctbScriptEditor.CurrentLineColor = Color.GreenYellow;
+            });
+        }
+    }
+
+    internal enum ScriptEditorState
+    {
+        PLAYING,
+        PAUSE,
+        READY_TO_PLAY,
     }
 }

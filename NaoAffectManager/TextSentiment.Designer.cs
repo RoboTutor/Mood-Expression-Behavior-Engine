@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnRequest = new System.Windows.Forms.Button();
             this.btnLaunchServer = new System.Windows.Forms.Button();
             this.zgcValence = new ZedGraph.ZedGraphControl();
@@ -82,8 +83,6 @@
             // cbSentiText
             // 
             this.cbSentiText.AutoSize = true;
-            this.cbSentiText.Checked = true;
-            this.cbSentiText.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSentiText.Location = new System.Drawing.Point(212, 15);
             this.cbSentiText.Name = "cbSentiText";
             this.cbSentiText.Size = new System.Drawing.Size(71, 17);

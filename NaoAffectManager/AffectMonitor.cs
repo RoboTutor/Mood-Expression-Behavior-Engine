@@ -31,7 +31,7 @@ namespace NaoAffectManager
             set 
             {
                 RobotAffect.Valence = value;
-                this.nudValence.Value = (decimal)(value);
+                this.nudValence.Value = (decimal)(value); 
             }
         }
 

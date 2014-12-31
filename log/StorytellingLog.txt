@@ -1,0 +1,76 @@
+----- 12/31/2014 03:00:13.111 PM	Story Started! -----
+12/31/2014 03:00:15.838 PM	SpeechExpression	\rspd=92\
+----- 12/31/2014 03:03:51.938 PM	Story Started! -----
+12/31/2014 03:03:54.651 PM	SpeechExpression	\rspd=92\
+----- 12/31/2014 03:07:26.459 PM	Story Started! -----
+12/31/2014 03:07:29.175 PM	SpeechExpression	\rspd=92\
+12/31/2014 03:07:36.630 PM	BehaviorSpeechExpression	HelloEverybody	Welcome everyone! \pau=500\ Good afternoon!
+12/31/2014 03:07:40.977 PM	BehaviorSpeechExpression	Intro	My name is Robo Tutor. \pau=300\ Today I will be giving a lecture to you.
+12/31/2014 03:07:44.310 PM	BehaviorSpeechExpression	HandOverLeft	In this lecture I will present an introduction to robotics. 
+12/31/2014 03:07:46.951 PM	BehaviorSpeechExpression	MeAndYouLeft	I will mostly be explaining to you about myself, \pau=300\and my fellow NAO robots.
+12/31/2014 03:07:49.949 PM	BehaviorSpeechExpression	SpreadBoth	The goal is to give you a general overview about how we work.
+12/31/2014 03:07:54.120 PM	BehaviorSpeechExpression	FirstMe	I will start with telling you a few basic things about robotics, and what kind of jobs we might be able to do for you.
+12/31/2014 03:07:59.254 PM	BehaviorSpeechExpression	MeAndYouLeft	Then I will use myself as an example to introduce common sensors, and effectors of a robot to you. 
+12/31/2014 03:08:03.380 PM	BehaviorSpeechExpression	PushAside	I will also say a few things about, how you can write programs for controlling my behavior.
+12/31/2014 03:08:06.900 PM	BehaviorSpeechExpression	HandOverLeft	Finally, I will introduce the robot tutor project, and how the scenario is created. 
+12/31/2014 03:08:10.022 PM	BehaviorSpeechExpression	PointForward	Throughout this presentation, I will ask you some quiz questions. So please pay attention.
+12/31/2014 03:08:14.414 PM	BehaviorSpeechExpression	HandOver	You should all have a turning point clicker. \pau=300\ Please use this to answer the questions I present on the slides.
+12/31/2014 03:08:20.167 PM	BehaviorSpeechExpression	Convince	The word robot is de-rived from the slavonic word robotnik which means serf.
+12/31/2014 03:08:22.917 PM	BehaviorSpeechExpression	First	It was first used in a science fiction play in 1921. 
+12/31/2014 03:08:25.446 PM	BehaviorSpeechExpression	Think	So the origin of the word robot is a little more than 90 years old.
+12/31/2014 03:08:29.314 PM	BehaviorSpeechExpression	Me	Let me introduce you to some of the more well-known members of my robot family. 
+12/31/2014 03:08:32.659 PM	BehaviorSpeechExpression	HandOverBoth	I will show some more robot relatives of mine on the next slide.
+12/31/2014 03:08:35.993 PM	BehaviorSpeechExpression	Balance	Manipulators are my most distant family members. They are physically anchored to their workplace. 
+12/31/2014 03:08:39.315 PM	BehaviorSpeechExpression	PointUpRight	At the top left you see a typical assembly robot, the KU-KA manipulator.
+12/31/2014 03:08:43.873 PM	SpeechExpression	These robots are used to assemble many items, 
+12/31/2014 03:08:45.615 PM	BehaviorSpeechExpression	FromAToB	from cars,
+12/31/2014 03:08:48.173 PM	SpeechExpression	\pau=500\ 
+12/31/2014 03:08:48.504 PM	SpeechExpression	to computers.
+12/31/2014 03:08:49.026 PM	BehaviorSpeechExpression	State	They do not have much intelligence, they just do as they are told, in some sort of preprogrammed script.
+12/31/2014 03:08:53.554 PM	BehaviorSpeechExpression	HandOver	On the left bottom, you see the doctor of the family, Da Vinci.
+12/31/2014 03:08:56.271 PM	BehaviorSpeechExpression	ConvergeHands	He works together with a human doctor or surgeon, to perform many difficult surgeries.
+12/31/2014 03:08:59.293 PM	BehaviorSpeechExpression	Capisce	DaVinci is a high precision robot, which makes surgeries a lot easier for doctors.
+12/31/2014 03:09:02.841 PM	BehaviorSpeechExpression	State	Next to KU-KA, you see the Ze-bro robot developed at Delft University.
+12/31/2014 03:09:06.254 PM	BehaviorSpeechExpression	WavyShape	Ze-bro is a member of the family of mobile robots, and can move on rough terrain.
+12/31/2014 03:09:09.604 PM	BehaviorSpeechExpression	Convince	It is a very robust robot that can survive a fall of several meters.
+12/31/2014 03:09:13.141 PM	BehaviorSpeechExpression	PointFrontDown	At the bottom, in the middle, you see a quadcopter, that is a flying member of the mobile robot family.
+12/31/2014 03:09:17.765 PM	BehaviorSpeechExpression	PushAsideBoth	They are commonly used for surveillance.
+12/31/2014 03:09:21.024 PM	BehaviorSpeechExpression	ShowSideLeft	To the right of Ze-bro you see Honda Asimo, my big brother.
+12/31/2014 03:09:24.893 PM	SpeechExpression	Asimo is widely known for its abilities to walk up stairs, \pau=300\ jump,
+12/31/2014 03:09:27.623 PM	BehaviorSpeechExpression	SpreadBoth	and perform many jobs around the house.
+12/31/2014 03:09:29.256 PM	BehaviorSpeechExpression	Balance	He also appeared in the movie, Robot and Frank.
+12/31/2014 03:09:33.642 PM	BehaviorSpeechExpression	SpreadLeft	At the right bottom, you see a human sitting with a robot.
+12/31/2014 03:09:36.185 PM	BehaviorSpeechExpression	Think	Can you guess which is the robot? 
+12/31/2014 03:09:41.163 PM	SpeechExpression	They look quite similar, even indistinguishable if they do not move.
+12/31/2014 03:09:44.611 PM	BehaviorSpeechExpression	State	Robots like this are called Geminoid robots.
+12/31/2014 03:09:48.622 PM	BehaviorSpeechExpression	ConvergeHands	These are just some of the many examples of robots in every day life.
+12/31/2014 03:09:52.866 PM	BehaviorSpeechExpression	RotatingCapisce	So originally, we are meant to serve you. But, for what tasks can you put us to good use?
+12/31/2014 03:09:56.997 PM	BehaviorSpeechExpression	Motivate	I probably should make a good case here to convince you, that I am worth the money.
+12/31/2014 03:10:00.519 PM	BehaviorSpeechExpression	YouAndMe	Unlike humans, we robots are not affected by fear, and we are able to help with dangerous tasks, that you would rather not.
+12/31/2014 03:10:05.239 PM	BehaviorSpeechExpression	Propose	Take for example the nuclear disaster in Fukushima. 
+12/31/2014 03:10:08.139 PM	BehaviorSpeechExpression	PointUpRight	As you can see at the top left, robots were used to clean up the nuclear waste.
+12/31/2014 03:10:12.677 PM	BehaviorSpeechExpression	HandOver	Unlike humans we robots also have no problem, performing repetitive tasks like boxing items,
+12/31/2014 03:10:15.612 PM	BehaviorSpeechExpression	ConvergeHands	and putting things together. For example, 
+12/31/2014 03:10:19.044 PM	BehaviorSpeechExpression	PointUpLeft	you can see at the top right, all cars produced today are assembled by robots.
+12/31/2014 03:10:23.578 PM	BehaviorSpeechExpression	PushAsideBoth	In many assembly line tasks, we robots have become more cost effective, than human workers. 
+12/31/2014 03:10:26.924 PM	BehaviorSpeechExpression	PushAsideBoth	We are also becoming very effective tools, for gathering information in domains, 
+12/31/2014 03:10:29.557 PM	SpeechExpression	that are difficult or dangerous for people to access. 
+12/31/2014 03:10:31.696 PM	BehaviorSpeechExpression	No	Without robots, you would not have explored Mars!
+12/31/2014 03:10:33.879 PM	SpeechExpression	And last but not least, we are also
+12/31/2014 03:10:35.621 PM	BehaviorSpeechExpression	PushAsideBoth	becoming more and more able, to assist individuals in performing daily tasks.
+12/31/2014 03:10:38.259 PM	BehaviorSpeechExpression	SpreadLeft	For example, you can buy my relative called the Roomba, to vacuum clean your house. 
+12/31/2014 03:10:41.608 PM	BehaviorSpeechExpression	Applaud	It can even detect filthy areas that need more cleaning.
+12/31/2014 03:10:45.228 PM	BehaviorSpeechExpression	ConvergeHands	Let's now try to define what a robot is.
+12/31/2014 03:10:49.383 PM	BehaviorSpeechExpression	Me	As you will have noticed I am a robot. Because I have \rmw=1\legs,  arms\rmw=0\
+12/31/2014 03:10:52.722 PM	BehaviorSpeechExpression	ShowBody	and a body that looks a bit like a human, \pau=500\I am a humanoid robot. 
+12/31/2014 03:10:58.000 PM	SpeechExpression	Although we most of the time, 
+12/31/2014 03:10:59.324 PM	BehaviorSpeechExpression	SpreadBoth	all will agree on seeing a robot when we see one, providing a definition that we all agree on,
+12/31/2014 03:11:03.247 PM	BehaviorSpeechExpression	No	is not so easy.
+12/31/2014 03:11:06.548 PM	BehaviorSpeechExpression	Capisce	Russell and Norvig define robots as, "physical agents that perform tasks, by manipulating the physical world." 
+12/31/2014 03:11:10.090 PM	SpeechExpression	To this end, robots are equipped with effectors and sensors.
+12/31/2014 03:11:12.213 PM	BehaviorSpeechExpression	SpreadBoth	One of the issues with a typical definition as this one, is that, some appliances that you might think, are not robots, technically are.
+12/31/2014 03:11:17.137 PM	BehaviorSpeechExpression	Think	Imagine, for example, your home thermostat. It is a physical agent, also has sensors and effectors, and manipulates temperature in the physical world.
+12/31/2014 03:11:22.061 PM	BehaviorSpeechExpression	PressDown	But a thermostat clearly is something very different, from a robot like me!
+12/31/2014 03:11:25.567 PM	BehaviorSpeechExpression	PushAsideBoth	Up to now, there is no standard definition of robot that satisfies everyone, and many people have their own.
+12/31/2014 03:11:30.721 PM	Story Ended!
+ ----- 

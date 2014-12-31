@@ -60,12 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExternalScriptEngine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ExternalScriptEngine.Designer.cs">
-      <DependentUpon>ExternalScriptEngine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,13 +77,11 @@
     <Compile Include="ScriptEditorForm.Designer.cs">
       <DependentUpon>ScriptEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptInterpreter.cs" />
+    <Compile Include="ScriptSyntax.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExternalScriptEngine.resx">
-      <DependentUpon>ExternalScriptEngine.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
