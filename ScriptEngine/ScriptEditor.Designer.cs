@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScriptEditor));
             this.nudJumpNum = new System.Windows.Forms.NumericUpDown();
+            this.nudJumpNum.Maximum = 999; // RUUD
             this.btnExecute = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.fctbScriptEditor = new FastColoredTextBoxNS.FastColoredTextBox();
