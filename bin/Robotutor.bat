@@ -1,4 +1,6 @@
 
 @echo off
-cd %CD%\bin\Debug\
-DashBoard.exe
+cd %CD%\Debug\
+
+.\DashBoard.exe
+cd ..
