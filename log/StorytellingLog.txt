@@ -74,3 +74,13 @@
 12/31/2014 03:11:25.567 PM	BehaviorSpeechExpression	PushAsideBoth	Up to now, there is no standard definition of robot that satisfies everyone, and many people have their own.
 12/31/2014 03:11:30.721 PM	Story Ended!
  ----- 
+----- 06-19-2015 12:49:43.266 	Story Started! -----
+06-19-2015 12:49:46.105 	SpeechExpression	\rspd=95\
+06-19-2015 12:49:51.581 	BehaviorSpeechExpression	HelloEverybody	Welcome everyone! \pau=500\ Good afternoon!
+06-19-2015 12:50:04.686 	BehaviorSpeechExpression	Intro	My name is Robo Tutor. \pau=300\ Today I will be giving a lecture to you.
+06-19-2015 12:50:10.071 	BehaviorSpeechExpression	HandOverLeft	In this lecture I will present an introduction to robotics. 
+06-19-2015 12:50:14.018 	BehaviorSpeechExpression	MeAndYouLeft	I will mostly be explaining to you about myself, \pau=300\and my fellow NAO robots.
+06-19-2015 12:50:19.868 	BehaviorSpeechExpression	SpreadBoth	The goal is to give you a general overview about how we work.
+06-19-2015 12:50:25.422 	BehaviorSpeechExpression	FirstMe	I will start with telling you a few basic things about robotics, and what kind of jobs we might be able to do for you.
+06-19-2015 12:50:32.711 	BehaviorSpeechExpression	MeAndYouLeft	Then I will use myself as an example to introduce common sensors, and effectors of a robot to you. 
+06-19-2015 12:50:39.685 	BehaviorSpeechExpression	PushAside	I will also say a few things about, how you can write programs for controlling my behavior.

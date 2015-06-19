@@ -96,7 +96,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(329, 185);
+            this.groupBox1.Size = new System.Drawing.Size(461, 185);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Slides Control";
@@ -123,10 +123,10 @@
             // cbbFileAddress
             // 
             this.cbbFileAddress.FormattingEnabled = true;
-            this.cbbFileAddress.Location = new System.Drawing.Point(15, 37);
+            this.cbbFileAddress.Location = new System.Drawing.Point(8, 32);
             this.cbbFileAddress.Margin = new System.Windows.Forms.Padding(4);
             this.cbbFileAddress.Name = "cbbFileAddress";
-            this.cbbFileAddress.Size = new System.Drawing.Size(268, 24);
+            this.cbbFileAddress.Size = new System.Drawing.Size(449, 24);
             this.cbbFileAddress.TabIndex = 4;
             // 
             // SlidesController
@@ -136,7 +136,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SlidesController";
-            this.Size = new System.Drawing.Size(361, 222);
+            this.Size = new System.Drawing.Size(478, 222);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
