@@ -38,7 +38,8 @@ namespace PPTController
             InitializeComponent();
 
             string slidepath = Path.GetFullPath(Environment.CurrentDirectory + "\\..\\..\\Slides\\");
-            cbbFileAddress.Items.Add(slidepath + "Haaksbergen.pptx");
+            
+            cbbFileAddress.Items.Add(slidepath + "NL_lang.pptx");
             cbbFileAddress.Items.Add(slidepath + "NaoLectureSlides3.3_Part1.pptx");
             cbbFileAddress.Items.Add(slidepath + "NaoLectureSlides3.3_Part2.pptx");
             cbbFileAddress.SelectedIndex = 0;
