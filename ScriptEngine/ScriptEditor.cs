@@ -123,7 +123,7 @@ namespace ScriptEngine
         private void btnLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Environment.CurrentDirectory + "\\..\\..\\Script\\";
+            ofd.InitialDirectory = Environment.CurrentDirectory + "\\..\\..\\Scripts\\";
             DialogResult dr = ofd.ShowDialog();
             if (dr == DialogResult.OK)
             {
